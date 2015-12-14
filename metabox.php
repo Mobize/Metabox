@@ -13,6 +13,61 @@ function starter_meta_boxes($meta_boxes) {
 		$template_file = get_post_meta($post_id, '_wp_page_template', true);
 	}
 
+	$prefix = 'evenement_';
+
+	$meta_boxes['evenement'] = array(
+		'id' => 'evenement',
+		'title' => 'Evenements',
+		'pages' => array('evenement'),
+		'context' => 'normal',
+		'priority' => 'high',
+		'fields' => array(
+
+			// Dates
+			array(
+				'name' => __('Dates', 'starter'),
+				'type' => 'heading',
+			),
+
+			array(
+				'name' => __('Date de début', 'starter'),
+				'id' => $prefix.'start_date',
+				'type' => 'date'
+			),
+
+			array(
+				'name' => __('Date de fin', 'starter'),
+				'id' => $prefix.'end_date',
+				'type' => 'date'
+			),
+
+			// Informations
+			array(
+				'name' => __('Informations', 'starter'),
+				'type' => 'heading',
+			),
+
+			array(
+				'name' => __('Titre', 'starter'),
+				'id' => $prefix.'title',
+				'type' => 'text'
+			),
+
+			array(
+				'name' => __('Image', 'starter'),
+				'id' => $prefix.'image',
+				'type' => 'image'
+			),
+
+			array(
+				'name' => __('Contenu', 'starter'),
+				'id' => $prefix.'content',
+				'type' => 'wysiwyg',
+				'desc' => 'Description de l\'evenement, 500 chars max'
+			),
+		)
+	);
+
 	$prefix = 'contact_';
 
 	$meta_boxes['contact'] = array(
@@ -98,7 +153,6 @@ function starter_meta_boxes($meta_boxes) {
 		)
 	);
 
-	/*
 	$prefix = 'option_';
 
 	$meta_boxes['option'] = array(
@@ -109,42 +163,23 @@ function starter_meta_boxes($meta_boxes) {
 		'priority' => 'high',
 		'fields' => array(
 
-			// Encarts
+			// Styles
 			array(
-				'name' => __('Encarts', 'starter'),
+				'name' => __('Styles', 'starter'),
 				'type' => 'heading',
 			),
 			array(
-				'name' => __('Contenu', 'starter'),
-				'id' => $prefix.'blocks_content',
-				'type' => 'wysiwyg'
-			),
-
-			// Sidebar
-			array(
-				'name' => __('Sidebar', 'starter'),
-				'type' => 'heading',
+				'name' => __('Background Color', 'starter'),
+				'id' => $prefix.'background_color',
+				'type' => 'color'
 			),
 			array(
-				'name' => __('Contenu', 'starter'),
-				'id' => $prefix.'sidebar_content',
-				'type' => 'wysiwyg'
-			),
-
-
-			// Slideshow
-			array(
-				'name' => __('Slideshow', 'starter'),
-				'type' => 'heading',
-			),
-			array(
-				'name' => __('Slider ID', 'starter'),
-				'id' => $prefix.'slider_id',
-				'type' => 'text'
+				'name' => __('Background Image', 'starter'),
+				'id' => $prefix.'background_image',
+				'type' => 'image'
 			),
 		)
 	);
-	*/
 
 	return $meta_boxes;
 }
